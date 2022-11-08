@@ -1,0 +1,22 @@
+package com.railway.controller.command;
+
+/**
+ * The enum CommandType.
+ */
+public enum CommandType {
+    //COMMON
+    SIGN_IN, SIGN_OUT, SIGN_UP,
+    MOVE_TO_LOGIN_PAGE, MOVE_TO_MAIN_PAGE, MOVE_TO_SIGNUP_PAGE,
+    GET_ROUTE_LIST, GET_ROUTE, SEARCH_ROUTES,
+
+    //USER
+//    ADD_FEEDBACK, MOVE_TO_ADD_FEEDBACK_PAGE,
+
+    //ADMIN
+    GET_USERS, CHANGE_USER_ROLE, CHANGE_USER_IS_ACTIVE,
+    MOVE_TO_ADD_ROUTE_PAGE,
+    MOVE_TO_EDIT_ROUTE_PAGE, EDIT_ROUTE, DELETE_ROUTE,
+    ADD_ROUTE,
+
+    DEFAULT
+}
