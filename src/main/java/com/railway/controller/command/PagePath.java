@@ -8,7 +8,8 @@ public enum PagePath {
     MAIN_PAGE("pages/main.jsp"),
     LOGIN_PAGE("pages/login.jsp"),
     REGISTER_PAGE("pages/register.jsp"),
-    ERROR_PAGE("pages/error.jsp");
+    ERROR_PAGE("pages/error.jsp"),
+    PROFILE_PAGE("pages/profile.jsp");
 
     private final String address;
 

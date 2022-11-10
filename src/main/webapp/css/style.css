@@ -244,4 +244,51 @@ button:active {
     color: var(--red-color);
 }
 
+.nav {
+    width: 100vw;
+    height: 100px;
+    background-color: var(--background-color);
+    box-shadow: 10px 10px 12px 0 rgba(0,0,0,.07);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 3rem;
+    list-style-type: none;
+}
+
+li.logo {
+    margin-right: auto;
+    font-size: 1.5rem;
+    color: dimgray;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,.3), -2px -2px 4px rgba(255,255,255,1);
+}
+
+li:not(.logo) {
+    margin: 0 1rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid rgba(255,255,255,.3);
+    box-shadow: 4px 4px 6px 0 rgba(0,0,0,.1), -4px -4px 6px rgba(255,255,255,1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
+    color: dimgray;
+}
+
+li:not(.logo):hover {
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.1), -4px -4px 10px rgba(255,255,255,1);
+}
+
+li:not(.logo):focus {
+    outline: none;
+    transform: scale(0.95);
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.1), -4px -4px 10px rgba(255,255,255,1), 4px 4px 10px 0 rgba(0,0,0,.1) inset, -4px -4px 10px rgba(255,255,255,1) inset;
+}
+
+li:not(.logo):hover, li:not(.logo):focus{
+    color: var(--red-color);
+}
+
 

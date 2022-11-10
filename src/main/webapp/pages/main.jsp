@@ -12,16 +12,12 @@
     </head>
 
     <body onload="changeHashOnLoad();">
+    <jsp:include page="parts/navbar.jsp"/>
 
         <div class="reg-container">
             <div class="reg-form">
                 <div class="reg-title">
                     <h1>[ Main Page ]</h1>
-                    <form action="${pageContext.request.contextPath}/controller" method="get">
-                        <input type="hidden" name="command" value="move_to_signup_page">
-                        <button type="submit" class="sing-in-btn">Register</button>
-                    </form>
-                    <h2>User: ${user.name}</h2>
                 </div>
             </div>
         </div>

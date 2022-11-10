@@ -6,6 +6,7 @@ import com.railway.controller.command.impl.general.SignOutCommand;
 import com.railway.controller.command.impl.general.SignUpCommand;
 import com.railway.controller.command.impl.moveto.general.MoveToLoginPageCommand;
 import com.railway.controller.command.impl.moveto.general.MoveToMainPageCommand;
+import com.railway.controller.command.impl.moveto.general.MoveToProfilePageCommand;
 import com.railway.controller.command.impl.moveto.general.MoveToSignupPageCommand;
 
 import java.util.EnumMap;
@@ -80,5 +81,6 @@ public class CommandProvider {
 
     private void addUserCommands() {
         commands.put(CommandType.SIGN_OUT, new SignOutCommand());
+        commands.put(CommandType.MOVE_TO_PROFILE_PAGE, new MoveToProfilePageCommand());
     }
 }
