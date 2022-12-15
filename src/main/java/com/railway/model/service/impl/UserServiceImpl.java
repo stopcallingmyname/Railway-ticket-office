@@ -15,6 +15,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The implementation of UserService interface.
+ */
 public class UserServiceImpl implements UserService {
     private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
     private final UserDAO userDao = UserDaoImpl.getInstance();
@@ -27,6 +30,11 @@ public class UserServiceImpl implements UserService {
         private static final UserServiceImpl INSTANCE = new UserServiceImpl();
     }
 
+    /**
+     * Gets instance of user service.
+     *
+     * @return the instance of user service
+     */
     public static UserService getInstance() {
         return UserServiceInstanceHolder.INSTANCE;
     }
@@ -85,10 +93,6 @@ public class UserServiceImpl implements UserService {
         if (!UserValidator.getInstance().isValid(user)) {
             logger.error("Invalid user");
             throw new ServiceException("Invalid user");
-        }
-        if (is_active == false) {
-            logger.error("User not active");
-            throw new ServiceException("User not active");
         }
 
         User updatedUser = buildUser(user.getId(), user.getEmail(), user.getName(),

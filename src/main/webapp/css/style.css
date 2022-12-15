@@ -26,11 +26,20 @@ img{vertical-align: top;}
 body {
     width: 100%;
     height: 100%;
+    background: var(--background-color);
+    overflow: hidden;
+}
+
+body .reg-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--background-color);
-    overflow: hidden;
+}
+
+body.route-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div, p {
@@ -52,6 +61,10 @@ p {
 
 .reg-form {
     width: 350px;
+    height: auto;
+}
+
+.route-form {
     height: auto;
 }
 
@@ -290,5 +303,10 @@ li:not(.logo):focus {
 li:not(.logo):hover, li:not(.logo):focus{
     color: var(--red-color);
 }
+
+ul>form {
+    margin: 5px;
+}
+
 
 

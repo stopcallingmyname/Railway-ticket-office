@@ -24,14 +24,14 @@ public class SignInCommand implements Command {
             String password = requestUtil.getParameterAsString(request, RequestParameter.PASSWORD);
             User user = service.signIn(email, password);
             if (!user.getIsActivated()) {
-                request.setAttribute(RequestAttribute.ERROR_MESSAGE, "Oops your account is not activated");
+                request.setAttribute(RequestAttribute.ERROR_MESSAGE, "Oops.. Your account is not activated.");
                 return new Router(PagePath.LOGIN_PAGE.getAddress(), Router.RouterType.FORWARD);
             }
             setSessionAttributes(request, user);
             router = new Router(PagePath.INDEX_PAGE.getAddress(), Router.RouterType.REDIRECT);
         } catch (ServiceException e) {
             logger.error("Error at SignInCommand", e);
-            request.setAttribute(RequestAttribute.ERROR_MESSAGE, "Wrong login or password");
+            request.setAttribute(RequestAttribute.ERROR_MESSAGE, "Wrong email or password.");
             router = new Router(PagePath.LOGIN_PAGE.getAddress(), Router.RouterType.FORWARD);
         }
         return router;

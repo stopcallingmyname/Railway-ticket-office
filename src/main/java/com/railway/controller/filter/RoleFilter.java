@@ -1,5 +1,6 @@
 package com.railway.controller.filter;
 
+import com.railway.controller.command.Command;
 import com.railway.controller.command.CommandType;
 import com.railway.controller.command.RequestParameter;
 import com.railway.controller.command.SessionAttribute;
@@ -18,9 +19,11 @@ import java.util.EnumSet;
 @WebFilter(urlPatterns = { "/*" })
 public class RoleFilter implements Filter{
     private EnumSet<CommandType> generalCommands;
+    private EnumSet<CommandType> adminCommands;
 
     public void init(FilterConfig config) {
         generalCommands = EnumSet.range(CommandType.SIGN_IN, CommandType.SEARCH_ROUTES);
+        adminCommands = EnumSet.range(CommandType.GET_USERS, CommandType.ADD_ROUTE);
     }
 
     @Override
@@ -44,10 +47,10 @@ public class RoleFilter implements Filter{
             chain.doFilter(request, response);
             return;
         }
-//        if (adminCommands.stream().anyMatch(commandType -> commandType.toString().toLowerCase().equals(commandName))) {
-//            ((HttpServletResponse) response).sendError(404);
-//            return;
-//        }
+        if (adminCommands.stream().anyMatch(commandType -> commandType.toString().toLowerCase().equals(commandName))) {
+            ((HttpServletResponse) response).sendError(404);
+            return;
+        }
         chain.doFilter(request, response);
     }
 }

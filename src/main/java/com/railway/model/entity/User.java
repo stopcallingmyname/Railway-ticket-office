@@ -8,7 +8,7 @@ public class User {
     private String name;
     private String surname;
     private String phone;
-    private boolean is_activated;
+    private Boolean is_activated;
     private UserRole role;
 
     public Integer getId() {
@@ -51,11 +51,11 @@ public class User {
         this.phone = phone;
     }
 
-    public boolean getIsActivated() {
+    public Boolean getIsActivated() {
         return is_activated;
     }
 
-    public void setIsActivated(boolean is_activated) {
+    public void setIsActivated(Boolean is_activated) {
         this.is_activated = is_activated;
     }
 

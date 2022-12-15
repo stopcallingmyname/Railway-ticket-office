@@ -11,7 +11,7 @@ public enum UserRole {
     /**
      * Admin role.
      */
-    ADMIN(2);
+    ADMIN(0);
 
     private final int id;
 

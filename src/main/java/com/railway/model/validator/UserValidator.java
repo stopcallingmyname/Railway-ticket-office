@@ -48,7 +48,7 @@ public final class UserValidator implements Validator{
                 && !user.getName().isEmpty()
                 && user.getSurname() != null
                 && !user.getSurname().isEmpty()
-                && user.getIsActivated()
+                && user.getIsActivated() != null
                 && user.getRole() != null;
     }
 }

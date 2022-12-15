@@ -22,6 +22,9 @@
             <h2>Name: ${user.name}</h2>
             <h2>Surname: ${user.surname}</h2>
             <h2>Phone: ${user.phone}</h2>
+            <c:if test="${role == 'ADMIN'}">
+                <h2>Role: ${user.role}</h2>
+            </c:if>
             <form action="${pageContext.request.contextPath}/controller" method="get">
                 <input type="hidden" name="command" value="move_to_main_page">
                 <button type="submit" class="sing-in-btn"><i class="fa-solid fa-house"></i></button>

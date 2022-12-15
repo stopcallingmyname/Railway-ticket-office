@@ -19,6 +19,43 @@
                 <div class="reg-title">
                     <h1>[ Main Page ]</h1>
                 </div>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th scope="col">Route</th>
+                        <th scope="col">Departure</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="route" items="${routes_list}">
+                        <tr>
+                            <td>
+                                <form id="${route.id}" action="${pageContext.request.contextPath}/controller" method="get">
+                                    <input type="hidden" name="route_id" value="${route.id}">
+                                    <input type="hidden" name="command" value="get_route">
+                                    <a class="nav-link active" href=# onclick="document.getElementById('${route.id}').submit()" tabindex="-1" aria-disabled="true">${route.id}</a>
+                                </form>
+                            </td>
+                            <td>${route.departureStation}</td>
+                            <td>${route.destinationStation}</td>
+<%--                            <td>--%>
+<%--                                <c:choose>--%>
+<%--                                    <c:when test="${user.isActivated == true}">--%>
+<%--                                        <i class="fa-solid fa-user-check"></i>--%>
+<%--                                    </c:when>--%>
+<%--                                    <c:when test="${user.isActivated == false}">--%>
+<%--                                        <i class="fa-solid fa-user-minus"></i>--%>
+<%--                                    </c:when>--%>
+<%--                                </c:choose>--%>
+<%--                            </td>--%>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
             </div>
         </div>
 

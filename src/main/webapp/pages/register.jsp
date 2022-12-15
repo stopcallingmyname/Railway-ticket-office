@@ -39,7 +39,7 @@
 
                 <label for="floatingRepeatPassword"><input type="password" placeholder="Confirm Password" id="floatingRepeatPassword" name="repeated_password" required minlength="8" maxlength="30"></label>
 
-                <button class=btn-create type="submit"><i class="fa-solid fa-lock"></i>Create Account</button>
+                <button class=btn-create type="submit"><i class="fa-solid fa-user-plus"></i></i>Create Account</button>
 
                 <div>
                     <c:if test="${not empty error_message}">

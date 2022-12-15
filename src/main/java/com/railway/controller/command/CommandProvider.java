@@ -1,13 +1,10 @@
 package com.railway.controller.command;
 
-import com.railway.controller.command.impl.general.DefaultCommand;
-import com.railway.controller.command.impl.general.SignInCommand;
-import com.railway.controller.command.impl.general.SignOutCommand;
-import com.railway.controller.command.impl.general.SignUpCommand;
-import com.railway.controller.command.impl.moveto.general.MoveToLoginPageCommand;
-import com.railway.controller.command.impl.moveto.general.MoveToMainPageCommand;
-import com.railway.controller.command.impl.moveto.general.MoveToProfilePageCommand;
-import com.railway.controller.command.impl.moveto.general.MoveToSignupPageCommand;
+import com.railway.controller.command.impl.admin.*;
+import com.railway.controller.command.impl.general.*;
+import com.railway.controller.command.impl.moveto.admin.MoveToAddRoutePageCommand;
+import com.railway.controller.command.impl.moveto.admin.MoveToAddTrainPageCommand;
+import com.railway.controller.command.impl.moveto.general.*;
 
 import java.util.EnumMap;
 
@@ -21,7 +18,7 @@ public class CommandProvider {
     private CommandProvider() {
         addGeneralCommands();
         addUserCommands();
-//        addAdminCommands();
+        addAdminCommands();
     }
 
     /**
@@ -59,9 +56,9 @@ public class CommandProvider {
         commands.put(CommandType.SIGN_IN, new SignInCommand());
         commands.put(CommandType.SIGN_UP, new SignUpCommand());
         commands.put(CommandType.DEFAULT, new DefaultCommand());
-//        commands.put(CommandType.GET_ROUTE, new GetRouteCommand());
-//        commands.put(CommandType.SEARCH_ROUTES, new SearchRootesCommand());
-//        commands.put(CommandType.GET_ROUTE_LIST, new GetRouteListCommand());
+        commands.put(CommandType.GET_ROUTE, new GetRouteCommand());
+//        commands.put(CommandType.SEARCH_ROUTES, new SearchRoutesCommand());
+        commands.put(CommandType.GET_ROUTE_LIST, new GetRoutesListCommand());
         commands.put(CommandType.MOVE_TO_MAIN_PAGE, new MoveToMainPageCommand());
         commands.put(CommandType.MOVE_TO_LOGIN_PAGE, new MoveToLoginPageCommand());
         commands.put(CommandType.MOVE_TO_SIGNUP_PAGE, new MoveToSignupPageCommand());
@@ -69,13 +66,16 @@ public class CommandProvider {
     }
 
     private void addAdminCommands() {
-//        commands.put(CommandType.GET_USERS, new GetUsersCommand());
-//        commands.put(CommandType.ADD_ROUTE, new AddRouteCommand());
+        commands.put(CommandType.GET_USERS, new GetUsersCommand());
+        commands.put(CommandType.CHANGE_USER_ROLE, new ChangeUserRoleCommand());
+        commands.put(CommandType.CHANGE_USER_IS_ACTIVE, new ChangeUserIsActivatedCommand());
+        commands.put(CommandType.MOVE_TO_ADD_TRAIN_PAGE, new MoveToAddTrainPageCommand());
+        commands.put(CommandType.MOVE_TO_ADD_ROUTE_PAGE, new MoveToAddRoutePageCommand());
+        commands.put(CommandType.ADD_TRAIN, new AddTrainCommand());
+        commands.put(CommandType.ADD_ROUTE, new AddRouteCommand());
 //        commands.put(CommandType.EDIT_ROUTE, new EditRouteCommand());
 //        commands.put(CommandType.DELETE_ROUTE, new DeleteRouteCommand());
-//        commands.put(CommandType.CHANGE_USER_ROLE, new ChangeUserRoleCommand());
-//        commands.put(CommandType.CHANGE_USER_IS_ACTIVE, new ChangeUserIsAcriveCommand());
-//        commands.put(CommandType.MOVE_TO_ADD_ROUTE_PAGE, new MoveToAddRoutePageCommand());
+
 //        commands.put(CommandType.MOVE_TO_EDIT_ROUTE_PAGE, new MoveToEditRoutePageCommand());
     }
 

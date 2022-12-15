@@ -31,7 +31,13 @@
 
                     <label for="Password"><input type="password" placeholder="Password" id="password" name="password"></label>
 
-                    <button class=btn-create type="submit"><i class="fa-solid fa-unlock"></i>Log-in</button>
+                    <div>
+                        <c:if test="${not empty error_message}">
+                            ${error_message}
+                        </c:if>
+                    </div>
+
+                    <button class=btn-create type="submit"><i class="fa-solid fa-right-to-bracket"></i>Log-in</button>
                 </form>
             </div>
         </div>

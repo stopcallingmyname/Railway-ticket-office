@@ -5,6 +5,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -93,6 +97,64 @@ public class RequestUtil {
             throw new ServiceException("Invalid parameter");
         }
         return parameter.get();
+    }
+
+    /**
+     * Gets parameter as date. Throws ServiceException is parameter is null or empty.
+     *
+     * @param request       the request
+     * @return the parameter as string
+     * @throws ServiceException if parameter is null or empty
+     */
+    public Date getParameterAsDate(HttpServletRequest request) throws ServiceException {
+
+        Optional<String> parameter = getParameter(request, RequestParameter.TRAIN_DATE);
+        if (parameter.isPresent()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            try {
+                long date = sdf.parse(parameter.get()).getTime();
+                return new Date(date);
+            } catch (ParseException | IllegalArgumentException e) {
+                logger.error("Invalid parameter");
+                logger.error(e);
+                throw new ServiceException("Invalid parameter");
+            }
+        } else {
+            logger.error("Invalid parameter");
+            throw new ServiceException("Invalid parameter");
+        }
+    }
+
+    /**
+     * Gets parameter as time. Throws ServiceException is parameter is null or empty.
+     *
+     * @param request       the request
+     * @return the parameter as string
+     * @throws ServiceException if parameter is null or empty
+     */
+    public Time getParameterAsTime(HttpServletRequest request, String parameterName) throws ServiceException {
+        Optional<String> parameter = getParameter(request, parameterName);
+        if (parameter.isPresent()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+
+            try {
+                long time = sdf.parse(parameter.get()).getTime();
+                return new Time(time);
+            }
+            catch (IllegalArgumentException e) {
+                logger.error("Invalid parameter");
+                logger.error(e);
+                throw new ServiceException("Invalid parameter");
+            } catch (ParseException e) {
+                logger.error(e);
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            logger.error("Invalid parameter");
+            throw new ServiceException("Invalid parameter");
+        }
     }
 
     private Optional<String> getParameter(HttpServletRequest request, String parameterName) {
